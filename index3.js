@@ -24,3 +24,65 @@ import axios from 'axios';
 // }
 
 // getPosts([1, 2, 3]);
+
+
+// how to call post api in axios
+// axios.post('https://jsonplaceholder.typicode.com/posts', {
+//     body: {
+//         title: 'foo',
+//         body: 'bar',
+//         userId: 1,
+//     },
+//     headers: {
+//         'Content-type': 'application/json; charset=UTF-8',
+//     }
+// }).then(response => console.log(response)).
+//     catch(error => console.log(error));
+
+// how to call post api in axios
+// axios.put('https://jsonplaceholder.typicode.com/posts/1', {
+//     body: {
+//         id: 1,
+//         title: 'foler',
+//         body: 'bar',
+//         userId: 1,
+//     },
+//     headers: {
+//         'Content-type': 'application/json; charset=UTF-8',
+//     }
+// }).then(response => console.log(response)).
+//     catch(error => console.log(error));
+
+// how to call delete api in axios
+// axios.delete('https://jsonplaceholder.typicode.com/posts/1')
+//     .then(response => console.log(response)).catch(error => console.log(error));
+
+//how to use interceptors to handle api state
+axios.interceptors.request.use(config => {
+    // Modify request config before sending
+    console.log('Request Interceptor:', config);
+    config.params = {
+        page: 1,
+        limit: 10
+    }
+    return config;
+  }, error => {
+    console.error('Request Interceptor Error:', error);
+    return Promise.reject(error);
+  });
+
+axios.get('https://jsonplaceholder.typicode.com/posts/1', {
+  params: {
+    page: 1,
+    limit: 10
+  },
+  headers: {
+    'Authorization': 'Bearer token123'
+  }
+})
+  .then(response => {
+    console.log('Response:', response);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
