@@ -66,11 +66,36 @@ const content = 'Hello My name is Rahul i am a developer'
 
 // how to create directories asynchronously
 
-fs.mkdir('new-directory', (err) => {
-    if(err) {
-        console.error('error creating directory', err);
-        return;
-    }
+// fs.mkdir('new-directory', (err) => {
+//     if(err) {
+//         console.error('error creating directory', err);
+//         return;
+//     }
 
-    console.log('synchronously created directory');
-});
+//     console.log('synchronously created directory');
+// });
+
+
+// How to check state of file
+// function fileState() {
+//     try{
+//         const state = fs.statSync('./files/f1.txt');
+//         console.log('synchronously file state', state);
+//     }catch(e){
+//         console.error('error file state', e);
+//     }
+// }
+
+// fileState();
+
+// How to rename a file
+// function renameFile() {
+//     try{
+//         fs.renameSync('./files/f1.txt', './files/f.txt');
+//         console.log('synchronous file rename');
+//     }catch(e){
+//         console.error('error rename file');
+//     }
+// }
+
+// renameFile();
